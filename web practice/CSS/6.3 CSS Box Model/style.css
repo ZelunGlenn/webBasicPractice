@@ -1,0 +1,25 @@
+div {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+}
+
+#box1 {
+  padding: 20px;
+  border-width: 10px;
+  background-color: yellow;
+}
+#box1 p {
+  margin: 0;
+}
+#box2 {
+  background-color: red;
+  border-width: 20px 10px;
+  margin-left: 260px;
+}
+#box3 {
+  background-color: green;
+  border-width: 10px;
+  margin-left: 40px;
+}
+
