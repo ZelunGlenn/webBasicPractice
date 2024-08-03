@@ -8,9 +8,9 @@ const result = () => {
   document.querySelector('.player1Hand').innerHTML = `<img src="${options[player1Got]}" alt="">`;
   document.querySelector('.player2Hand').innerHTML = `<img src="${options[player2Got]}" alt="">`;
   if (player1Got === 0) {
-    document.querySelector('.winner').textContent = "Winner is Player 2"
+    document.querySelector('.winner').textContent = "Winner is Player 2 🏳️‍🌈"
   } else {
-    document.querySelector('.winner').textContent = "Winner is Player 1"
+    document.querySelector('.winner').textContent = "Winner is Player 1 🏳️‍🌈"
   }
   
 }
