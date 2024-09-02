@@ -1,5 +1,6 @@
 
-
+const audio0 = new Audio(`./sounds/music0.mp3`)
+const audio1 = new Audio(`./sounds/music1.mp3`)
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button, index) => {
@@ -29,6 +30,36 @@ buttons.forEach((button, index) => {
     }, 1000);
   });
 });
+console.log("hehe")
+
+document.addEventListener('keydown', (event) => {
+
+  switch (event.key) {
+    case "ArrowLeft":
+      console.log("wat")
+      audio0.play()
+      setTimeout(() => {
+        audio0.pause()
+        audio0.currentTime = 0
+      }, 3000)
+      audio1.pause()
+      audio1.currentTime = 0
+      break
+    case "ArrowRight":
+      console.log("sup")
+      audio1.play()
+      setTimeout(() => {
+        audio1.pause()
+        audio1.currentTime = 0
+      }, 3000)
+      audio0.pause()
+      audio0.currentTime = 0
+      break
+    default:
+      break
+  }
+
+})
 
 
 // const playMusic = () => {
