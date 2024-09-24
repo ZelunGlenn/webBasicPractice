@@ -1,0 +1,15 @@
+{
+  "name": "hero",
+  "version": "1.0.0",
+  "description": "to practice npm package install and use module",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Glenn",
+  "license": "ISC",
+  "dependencies": {
+    "superheroes": "^4.0.0"
+  }
+}
