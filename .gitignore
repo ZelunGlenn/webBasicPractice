@@ -10,3 +10,11 @@ web practice/JS/jQuery/PressKeyShown/package-lock.json
 /web practice/Backend/NPMpackagePractice02QR/node_modules
 /web practice/Backend/ExpressLession/node_modules
 /web practice/Backend/ExpressPrac01/Server/node_modules
+/web practice/Backend/3.4 Middleware/node_modules
+/web practice/Backend/3.5 Secrets Project/node_modules
+/web practice/Backend/PostmanPRac/node_modules
+.DS_Store
+web practice/.DS_Store
+web practice/Backend/3.4 Middleware/package-lock.json
+web practice/Backend/3.5 Secrets Project/package-lock.json
+web practice/Backend/PostmanPRac/package-lock.json
