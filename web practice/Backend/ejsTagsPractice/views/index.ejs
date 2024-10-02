@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('header.ejs') %>
+  <p>Current date is: <%= time %></p>
+  <% if (time % 2 !== 0) { %>
+      <p>No items</p>
+    <%} else { %>
+    <ul>
+      <% for (let i = 0; i < items.length; i++) { %>
+        <li><%= items[i] %></li>
+      <% } %>
+    </ul>
+    <% } %>
+    <%- htmlContent %>
+  <%- include('footer.ejs') %>
+</body>
+</html>
