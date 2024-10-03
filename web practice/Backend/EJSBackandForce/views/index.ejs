@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <% if (locals.number) { %>
+    <h1> Your info has <%= locals.number %> characters. </h1>
+  <% } else { %>
+    <h1> Welcome to the page! </h1>
+  <% } %>
+  <form action="/users" method="POST">
+    <lable for="name">Name:</lable>
+    <input type="text" name="name" id="name">
+    <lable for="email">Email:</lable>
+    <input type="text" name="email" id="email">
+    <lable for="phone">Phone:</lable>
+    <input type="text" name="phone" id="phone">
+    <input type="submit" value="Submit">
+  </form>
+  
+</body>
+</html>
