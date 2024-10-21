@@ -16,8 +16,6 @@ app.get('/', async (req, res) => {
     // remove " and " at the beginning and end of the JSON.stringify
     secret: JSON.stringify(rawData.data.secret).replace(/"/g, ""),
     user: JSON.stringify(rawData.data.username).replace(/"/g, "")
-    
-    
   })
 })
 
