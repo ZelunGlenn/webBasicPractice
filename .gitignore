@@ -48,3 +48,5 @@ web practice/PostgreSQLPractice/8.2 Postgres Read/.env
 web practice/PostgreSQLPractice/8.2 Postgres Read/package-lock.json
 web practice/PostgreSQLPractice/World+Capital+Quiz/package-lock.json
 *.csv
+web practice/PostgreSQLPractice/8.2 Postgres Read/public/images/background.jpg
+web practice/PostgreSQLPractice/World+Capital+Quiz/public/images/background.jpg
