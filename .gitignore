@@ -41,3 +41,10 @@ web practice/APIPractice/5.5 REST APIs/package-lock.json
 web practice/BuildAPI/6.0 DIY API/package-lock.json
 /web practice/BuildAPI/6.1+Blog+API+Project/node_modules
 web practice/BuildAPI/6.1+Blog+API+Project/package-lock.json
+/web practice/PostgreSQLPractice/World+Capital+Quiz/node_modules
+web practice/PostgreSQLPractice/World+Capital+Quiz/.env
+web practice/PostgreSQLPractice/8.2 Postgres Read/.env
+/web practice/PostgreSQLPractice/8.2 Postgres Read/node_modules
+web practice/PostgreSQLPractice/8.2 Postgres Read/package-lock.json
+web practice/PostgreSQLPractice/World+Capital+Quiz/package-lock.json
+*.csv
