@@ -36,13 +36,38 @@ const getVisitedCountries = async () => {
   }
 }
 
+const getCountryCode = async(country) => {
+  try {
+    const raw = await pool.query(`SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%'`, [country])
+    const country_code = raw.rows[0].country_code
+    return country_code
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
+}
+
+
+const addVisitedCountries = async(country_code) => {
+  try {
+    await pool.query('INSERT INTO visited_countries (country_code) VALUES ($1)', [country_code])
+    // log
+    console.log(`Added ${country_code} to visited_countries`)
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
+}
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
+
   //Write your code here.
   try {
     const { visited_countries, total_visited_countries } = await getVisitedCountries()
+    console.log(`Visited ${visited_countries} countries`)
     res.render('index.ejs', {
       total: total_visited_countries,
       countries: visited_countries,
@@ -52,6 +77,31 @@ app.get("/", async (req, res) => {
     res.status(500).send('Internal Server Error')
   }
 });
+
+app.post('/add', async (req, res) => {
+  // console.log(req.body)
+  const country = req.body.country.charAt(0).toUpperCase() + req.body.country.slice(1)
+  try {
+    const country_code = await getCountryCode(country)
+    await addVisitedCountries(country_code)
+    res.redirect('/')
+  } catch (err) {
+    const { visited_countries, total_visited_countries } = await getVisitedCountries()
+    console.error(err.message)
+    if (err.message.includes('duplicate key')) {
+      res.render('index.ejs', { error: 'Country already visited',
+        total: total_visited_countries,
+        countries: visited_countries,
+       })
+    } else {
+      res.render('index.ejs', { error: 'Country name is not founded',
+        total: total_visited_countries,
+        countries: visited_countries,
+       })
+    }
+  }
+})
+
 
 process.on('SIGTERM', async () => {
   try {
