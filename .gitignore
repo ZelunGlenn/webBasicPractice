@@ -67,3 +67,5 @@ web practice/Authentication and Security/9.1+Authentication+Lv.1/queries.sql
 web practice/Authentication and Security/9.2+Authentication+Lv.2/package-lock.json
 web practice/Authentication and Security/9.2+Authentication+Lv.2/.env
 web practice/Authentication and Security/9.3+Sessions+and+Cookies/package-lock.json
+/web practice/Authentication and Security/9.3+Sessions+and+Cookies/node_modules
+web practice/Authentication and Security/9.3+Sessions+and+Cookies/.env
