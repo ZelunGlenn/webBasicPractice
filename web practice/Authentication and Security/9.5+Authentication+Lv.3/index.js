@@ -6,6 +6,7 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 import session from "express-session";
 import env from "dotenv";
+import GoogleStrategy from "passport-google-oauth2";
 
 const app = express();
 const port = 3000;
@@ -65,6 +66,30 @@ app.get("/secrets", (req, res) => {
   }
 });
 
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+)
+
+app.get('/auth/google/secrets', 
+  passport.authenticate("google", {
+    successRedirect: "/secrets",
+    failureRedirect: "/login",
+  } 
+))
+
+app.get('/logout', (req, res) => {
+  req.logout((e) => {
+    if (e) {
+      console.log(e)
+    }
+    res.redirect('/')
+  })
+})
+
 app.post(
   "/login",
   passport.authenticate("local", {
@@ -106,7 +131,31 @@ app.post("/register", async (req, res) => {
   }
 });
 
-passport.use(
+passport.use("google",
+  new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/secrets",
+    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo", 
+  }, async ( accessToken, refreshToken, profile, cb) => {
+    try {
+      const result = await db.query("SELECT * FROM users WHERE email = $1", [profile.email])
+      if (result.rows.length <= 0) {
+        const save_result = await db.query("INSERT INTO users (email, password) VALUES ($1, $2) RETURNING *", [profile.email, "password_google"])
+        const user = save_result.rows[0]
+        return cb(null, user)
+      } else {
+        const user = result.rows[0]
+        return cb(null, user)
+      }
+    } catch (e) {
+      console.log(e)
+      return cb(e)
+    }
+  })
+)
+
+passport.use("local",
   new Strategy(async function verify(username, password, cb) {
     try {
       const result = await db.query("SELECT * FROM users WHERE email = $1 ", [
@@ -115,6 +164,9 @@ passport.use(
       if (result.rows.length > 0) {
         const user = result.rows[0];
         const storedHashedPassword = user.password;
+        if ( storedHashedPassword === "password_google" ) {
+          return cb("login with google", false)
+        }
         bcrypt.compare(password, storedHashedPassword, (err, valid) => {
           if (err) {
             //Error with password check
