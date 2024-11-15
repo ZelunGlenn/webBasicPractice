@@ -66,13 +66,20 @@ app.get("/secrets", async (req, res) => {
     } catch (err) {
       console.log(err);
     }
-
     //TODO: Update this to pull in the user secret to render in secrets.ejs
   } else {
     res.redirect("/login");
   }
 });
 
+
+app.get("/submit", async (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("submit.ejs");
+  } else {
+    res.redirect("/login");
+  }
+})
 //TODO: Add a get route for the submit button
 //Think about how the logic should work with authentication.
 
@@ -134,6 +141,18 @@ app.post("/register", async (req, res) => {
 
 //TODO: Create the post route for submit.
 //Handle the submitted data and add it to the database
+
+app.post("/submit", async (req, res) => {
+  const secret = req.body.secret;
+  const email = req.user.email;
+
+  try {
+    const result = await db.query("UPDATE users SET secret = $1 WHERE email = $2 RETURNING *", [secret, email])
+    res.redirect("/secrets");
+  } catch (e) {
+    console.log(e);
+  }
+})
 
 passport.use(
   "local",
