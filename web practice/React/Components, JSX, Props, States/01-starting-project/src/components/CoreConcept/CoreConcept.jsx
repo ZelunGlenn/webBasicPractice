@@ -1,5 +1,5 @@
 
-
+import './CoreConcept.css';
 
 const CoreConcept = ({image, description, title}) => {
   return (

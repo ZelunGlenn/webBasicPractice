@@ -1,7 +1,14 @@
-import heroImage from '../assets/react-core-concepts.png';
+import heroImage from '../../assets/react-core-concepts.png';
 import React, { useState, useEffect } from 'react';
+import './Header.css';
 
 const options = ['basic', 'intermediate', 'advanced'];
+
+
+const generationNumber = (max) => {  
+  // generate a random numebr that change every 2 seconds
+  return Math.floor(Math.random() * (max + 1));
+}
 
 const Header = () => {
 

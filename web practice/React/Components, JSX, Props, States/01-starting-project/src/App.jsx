@@ -1,14 +1,10 @@
 
-import Header from './components/Header.jsx';
-import CoreConcept  from './components/CoreConcept.jsx';
+import Header from './components/Header/Header.jsx';
+import CoreConcept  from './components/CoreConcept/CoreConcept.jsx';
 import { CORE_CONCEPTS } from './data.js';
 
 
 
-const generationNumber = (max) => {  
-  // generate a random numebr that change every 2 seconds
-  return Math.floor(Math.random() * (max + 1));
-}
 
 
 
