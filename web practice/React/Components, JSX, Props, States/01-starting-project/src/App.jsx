@@ -2,6 +2,7 @@
 import Header from './components/Header/Header.jsx';
 import CoreConcept  from './components/CoreConcept/CoreConcept.jsx';
 import { CORE_CONCEPTS } from './data.js';
+import  TabButton  from './components/TabButton/tabButton.jsx';
 
 
 
@@ -36,6 +37,15 @@ function App() {
             {...CORE_CONCEPTS[3]}
           />
         </ul>
+        </section>
+        <section id='examples'>
+          <h2>Examples</h2>
+          <menu>
+            <TabButton class = ""> Components </TabButton>
+            <TabButton class = ""> JSX </TabButton>
+            <TabButton class = ""> Props </TabButton>
+            <TabButton class = ""> State </TabButton>
+          </menu>
         </section>
       </main>
     </div>
