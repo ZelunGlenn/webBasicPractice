@@ -14,6 +14,11 @@ import  TabButton  from './components/TabButton/tabButton.jsx';
 
 
 function App() {
+
+  const handleClick = () => {
+    console.log("Button clicked!")
+  }
+
   return (
     <>
     <Header />
@@ -41,10 +46,10 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton class = ""> Components </TabButton>
-            <TabButton class = ""> JSX </TabButton>
-            <TabButton class = ""> Props </TabButton>
-            <TabButton class = ""> State </TabButton>
+            <TabButton class = "" onSelect = { handleClick }> Components </TabButton>
+            <TabButton class = "" onSelect = { handleClick }> JSX </TabButton>
+            <TabButton class = "" onSelect = { handleClick }> Props </TabButton>
+            <TabButton class = "" onSelect = { handleClick }> State </TabButton>
           </menu>
         </section>
       </main>
