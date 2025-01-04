@@ -5,8 +5,7 @@ import { CORE_CONCEPTS } from './data.js';
 import  TabButton  from './components/TabButton/tabButton.jsx';
 
 
-
-
+import React, { useState } from 'react';
 
 
 
@@ -15,8 +14,11 @@ import  TabButton  from './components/TabButton/tabButton.jsx';
 
 function App() {
 
+  const [tabContent, setTabContent] = useState('');
+
   const handleClick = (selectedButton) => {
-    console.log("Selected Button: ", selectedButton);
+    setTabContent(selectedButton);
+    console.log("Tab Content: ", tabContent);
   }
 
   return (
@@ -51,6 +53,7 @@ function App() {
             <TabButton class = "" onSelect = { () => handleClick('Props') }> Props </TabButton>
             <TabButton class = "" onSelect = { () => handleClick('State') }> State </TabButton>
           </menu>
+          {tabContent}
         </section>
       </main>
     </div>
