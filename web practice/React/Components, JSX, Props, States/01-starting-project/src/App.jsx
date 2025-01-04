@@ -6,7 +6,7 @@ import  TabButton  from './components/TabButton/tabButton.jsx';
 
 
 import React, { useState } from 'react';
-
+import { EXAMPLES } from './data.js';
 
 
 
@@ -14,7 +14,7 @@ import React, { useState } from 'react';
 
 function App() {
 
-  const [tabContent, setTabContent] = useState('');
+  const [tabContent, setTabContent] = useState('components');
 
   const handleClick = (selectedButton) => {
     setTabContent(selectedButton);
@@ -48,12 +48,18 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton class = "" onSelect = { () => handleClick('Components') }> Components </TabButton>
-            <TabButton class = "" onSelect = { () => handleClick('JSX') }> JSX </TabButton>
-            <TabButton class = "" onSelect = { () => handleClick('Props') }> Props </TabButton>
-            <TabButton class = "" onSelect = { () => handleClick('State') }> State </TabButton>
+            <TabButton class = "" onSelect = { () => handleClick('components') }> Components </TabButton>
+            <TabButton class = "" onSelect = { () => handleClick('jsx') }> JSX </TabButton>
+            <TabButton class = "" onSelect = { () => handleClick('props') }> Props </TabButton>
+            <TabButton class = "" onSelect = { () => handleClick('state') }> State </TabButton>
           </menu>
-          {tabContent}
+          <div id="tab-content">
+            <h3>{EXAMPLES[tabContent].title}</h3>
+            <p>{EXAMPLES[tabContent].description}</p>
+            <pre>
+              <code>{EXAMPLES[tabContent].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
