@@ -14,12 +14,25 @@ import { EXAMPLES } from './data.js';
 
 function App() {
 
-  const [tabContent, setTabContent] = useState('components');
+  const [tabContent, setTabContent] = useState();
 
   const handleClick = (selectedButton) => {
     setTabContent(selectedButton);
-    console.log("Tab Content: ", tabContent);
   }
+
+  let selectedTabContent = (<p>Please select a tab.</p>)
+  if (tabContent) {
+    selectedTabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[tabContent].title}</h3>
+        <p>{EXAMPLES[tabContent].description}</p>
+        <pre>
+          <code>{EXAMPLES[tabContent].code}</code>
+        </pre>
+      </div>
+    )
+  }
+
 
   return (
     <>
@@ -53,13 +66,7 @@ function App() {
             <TabButton class = "" onSelect = { () => handleClick('props') }> Props </TabButton>
             <TabButton class = "" onSelect = { () => handleClick('state') }> State </TabButton>
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[tabContent].title}</h3>
-            <p>{EXAMPLES[tabContent].description}</p>
-            <pre>
-              <code>{EXAMPLES[tabContent].code}</code>
-            </pre>
-          </div>
+          {selectedTabContent}
         </section>
       </main>
     </div>
