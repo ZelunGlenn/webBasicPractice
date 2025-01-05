@@ -1,4 +1,3 @@
-
 import Header from './components/Header/Header.jsx';
 import CoreConcept  from './components/CoreConcept/CoreConcept.jsx';
 import { CORE_CONCEPTS } from './data.js';
@@ -20,7 +19,10 @@ function App() {
     setTabContent(selectedButton);
   }
 
-  let selectedTabContent = (<p>Please select a tab.</p>)
+  let selectedTabContent = (
+    <p>Please select a tab.</p>
+  );
+
   if (tabContent) {
     selectedTabContent = (
       <div id="tab-content">
@@ -61,10 +63,10 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-            <TabButton class = "" onSelect = { () => handleClick('components') }> Components </TabButton>
-            <TabButton class = "" onSelect = { () => handleClick('jsx') }> JSX </TabButton>
-            <TabButton class = "" onSelect = { () => handleClick('props') }> Props </TabButton>
-            <TabButton class = "" onSelect = { () => handleClick('state') }> State </TabButton>
+            <TabButton class = "" isSelected = { tabContent === 'components' } onSelect = { () => handleClick('components') }> Components </TabButton>
+            <TabButton class = "" isSelected = { tabContent === 'jsx' } onSelect = { () => handleClick('jsx') }> JSX </TabButton>
+            <TabButton class = "" isSelected = { tabContent === 'props' } onSelect = { () => handleClick('props') }> Props </TabButton>
+            <TabButton class = "" isSelected = { tabContent === 'state' } onSelect = { () => handleClick('state') }> State </TabButton>
           </menu>
           {selectedTabContent}
         </section>
