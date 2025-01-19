@@ -37,6 +37,7 @@ function App() {
 
 
   return (
+    // fragment tag
     <>
     <Header />
     <div>
