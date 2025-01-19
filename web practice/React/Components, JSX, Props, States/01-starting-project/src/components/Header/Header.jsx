@@ -1,5 +1,5 @@
 import heroImage from '../../assets/react-core-concepts.png';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Header.css';
 
 const options = ['basic', 'intermediate', 'advanced'];
